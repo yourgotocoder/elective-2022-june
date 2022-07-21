@@ -22,7 +22,8 @@
     "next-auth": "^4.5.0",
     "next-connect": "^0.12.2",
     "nodemailer": "^6.7.5",
-    "react-hook-form": "^7.33.0"
+    "react-hook-form": "^7.33.0",
+    "simple-excel-to-json": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "18.0.6",

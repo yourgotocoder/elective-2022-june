@@ -1,0 +1,1 @@
+Store your resource files for preparing the database here.
