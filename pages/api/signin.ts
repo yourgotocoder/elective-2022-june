@@ -13,19 +13,29 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { regno, passcode } = req.body;
+  if (regno === "") {
+    res.status(400).json({message: "Registration number is required"})
+    return
+  }
+  if (passcode === "") {
+    res.status(400).json({message: "Passcode is required"})
+    return
+  }
   const client = await connectToDatabase();
   const db = client.db("cse");
   const collection = db.collection("student-data");
-  const foundStudent = await collection.findOne({ regNo: regno });
+  console.log(regno)
+  const foundStudent = await collection.findOne({ regNo: +regno });
+  console.log(foundStudent)
   if (!foundStudent) {
     res
-      .status(200)
+      .status(404)
       .json({ message: "Registration number does not exist in db" });
     return;
   }
   if (foundStudent) {
     if (passcode !== foundStudent.passcode) {
-      res.status(200).json({ message: "Wrong passcode. Please try again" });
+      res.status(403).json({ message: "Wrong passcode. Please try again" });
       return;
     }
     const userData = { ...foundStudent };
