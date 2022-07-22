@@ -2,10 +2,12 @@ const reader = require("simple-excel-to-json");
 const { MongoClient } = require("mongodb");
 const fs = require("fs");
 
-const data = reader.parseXls2Json(__dirname + "/4thAllotment.xlsx");
+const data = reader.parseXls2Json(__dirname + "/6thSemElectiveAllotment.xlsx");
 // console.log(data[0]);
 const upload = async () => {
-    const client = await MongoClient.connect(process.env.MONGO_URL);
+    const client = await MongoClient.connect(
+        process.env.MONGO_CONNECTION_STRING
+    );
     const db = client.db("cse");
     const collection = db.collection("student-data");
     for (let i = 0; i < data[0].length; i++) {

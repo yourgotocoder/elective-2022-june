@@ -4,7 +4,9 @@ const { MongoClient } = require("mongodb");
 const data = reader.parseXls2Json(__dirname + "/StudentList.xlsx");
 // console.log(data[0]);
 const upload = async () => {
-    const client = await MongoClient.connect(process.env.MONGO_URL);
+    const client = await MongoClient.connect(
+        process.env.MONGO_CONNECTION_STRING
+    );
     const db = client.db("cse");
     const collection = db.collection("student-data");
     for (let i = 0; i < data[0].length; i++) {
