@@ -41,7 +41,7 @@ const update = async () => {
             (subject) => !alreadyStudied.includes(subject)
         );
         await collection.updateOne(
-            { regNo: _5thSemStudent.regNo },
+            { regNo: _5thSemStudent[i].regNo },
             {
                 $set: {
                     elective_7_options,
