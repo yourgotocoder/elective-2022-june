@@ -151,7 +151,16 @@ const ElectiveSelection = (props: Props) => {
         setSubmitting(true);
         try {
             const response = await axios.post("/api/submitElective", {
-                userData,
+                regNo: userData.regNo,
+                sem: userData.current_sem,
+                option1_1,
+                option1_2,
+                option1_3,
+                option1_4,
+                option2_1,
+                option2_2,
+                option2_3,
+                option2_4,
             });
             if (response) {
                 console.log(response);
