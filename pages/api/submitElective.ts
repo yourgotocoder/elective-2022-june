@@ -1,9 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import jwt from "jsonwebtoken";
 
 type Data = {
-    data: any;
+    message?: string;
 };
 
 export default function handler(
@@ -11,9 +10,8 @@ export default function handler(
     res: NextApiResponse<Data>
 ) {
     if (req.method === "POST") {
-        const { token } = req.body;
-        const data = jwt.decode(token);
+        const data = req.body;
         console.log(data);
-        res.status(200).json({ data });
+        res.status(200).json({ message: "John Doe" });
     }
 }
