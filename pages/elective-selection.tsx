@@ -13,6 +13,7 @@ import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
+import Chip from "@mui/material/Chip";
 
 type Props = {};
 
@@ -245,573 +246,857 @@ const ElectiveSelection = (props: Props) => {
                         {/* Form section */}
                         <div className={styles["main-section"]}>
                             {submitted && <h2>Thank you for submitting.</h2>}
-                            {!submitted && (
-                                <Stepper
-                                    activeStep={activeStep}
-                                    orientation="vertical"
+                            {userData && userData.elective_selections && (
+                                <div
+                                    className={styles["selection-data-section"]}
                                 >
-                                    <Step>
-                                        <StepLabel>
-                                            {userData &&
-                                            userData?.current_sem === 7
-                                                ? "Elective VII"
-                                                : "Elective III"}
-                                        </StepLabel>
-                                        <StepContent>
-                                            <Box
-                                                sx={{
-                                                    minWidth: 120,
-                                                    mb: 2,
-                                                    mt: 2,
-                                                }}
-                                            >
-                                                <FormControl fullWidth>
-                                                    <InputLabel id="option-1-1-label">
-                                                        Option 1
-                                                    </InputLabel>
-                                                    <Select
-                                                        labelId="option-1-1-label"
-                                                        id="option-1-1"
-                                                        label="Option 1"
-                                                        value={option1_1}
-                                                        onChange={(e) =>
-                                                            handleChange(
-                                                                e,
-                                                                "option1_1"
-                                                            )
-                                                        }
-                                                    >
-                                                        {optionList1?.map(
-                                                            (option, index) => (
-                                                                <MenuItem
-                                                                    value={
-                                                                        option
-                                                                    }
-                                                                    key={index}
-                                                                    disabled={disable_option_1(
-                                                                        option
-                                                                    )}
-                                                                >
-                                                                    {option}
-                                                                </MenuItem>
-                                                            )
-                                                        )}
-                                                    </Select>
-                                                </FormControl>
-                                            </Box>
-                                            {optionList1?.length > 1 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-1-2-label">
-                                                            Option 2
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-1-2-label"
-                                                            id="option-1-2"
-                                                            label="Option 2"
-                                                            value={option1_2}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option1_2"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList1?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_1(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                    <div>
+                                        {userData &&
+                                        userData.current_sem === 5 ? (
+                                            <Chip label="Elective III" />
+                                        ) : (
+                                            <Chip label="Elective VII"></Chip>
+                                        )}
+                                        <p
+                                            style={{
+                                                color: "gray",
+                                                fontSize: "0.7rem",
+                                            }}
+                                        >
+                                            Highest Priority
+                                        </p>
+                                        <ol
+                                            className={
+                                                styles["list-element-data"]
+                                            }
+                                        >
+                                            {userData.elective_selections.first
+                                                .option1_1 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .first.option1_1
+                                                    }
+                                                </li>
                                             )}
-                                            {optionList1.length > 2 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-1-3-label">
-                                                            Option 3
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-1-3-label"
-                                                            id="option-1-3"
-                                                            label="Option 3"
-                                                            value={option1_3}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option1_3"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList1?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_1(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                            {userData.elective_selections.first
+                                                .option1_2 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .first.option1_2
+                                                    }
+                                                </li>
                                             )}
-                                            {optionList1.length > 3 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-1-4-label">
-                                                            Option 4
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-1-4-label"
-                                                            id="option-1-4"
-                                                            label="Option 4"
-                                                            value={option1_4}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option1_4"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList1?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_1(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                            {userData.elective_selections.first
+                                                .option1_3 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .first.option1_3
+                                                    }
+                                                </li>
                                             )}
-                                            {optionList1.length > 4 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-1-4-label">
-                                                            Option 5
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-1-5-label"
-                                                            id="option-1-5"
-                                                            label="Option 5"
-                                                            value={option1_5}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option1_5"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList1?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_1(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                            {userData.elective_selections.first
+                                                .option1_4 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .first.option1_4
+                                                    }
+                                                </li>
                                             )}
-                                            <Box sx={{ mb: 2 }}>
-                                                <div>
-                                                    <Button
-                                                        variant="contained"
-                                                        type="button"
-                                                        disabled={
-                                                            option1_1 === "" ||
-                                                            option1_2 === "" ||
-                                                            (optionList1.length >
-                                                                2 &&
-                                                                option1_3 ===
-                                                                    "") ||
-                                                            (optionList1.length >
-                                                                3 &&
-                                                                option1_4 ===
-                                                                    "")
-                                                        }
-                                                        onClick={handleNext}
-                                                        sx={{ mt: 1, mr: 1 }}
-                                                    >
-                                                        Continue
-                                                    </Button>
-                                                </div>
-                                            </Box>
-                                        </StepContent>
-                                    </Step>
-                                    <Step>
-                                        <StepLabel>
-                                            {userData &&
-                                            userData.current_sem === 7
-                                                ? "Elective VIII"
-                                                : "Elective IV"}
-                                        </StepLabel>
-                                        <StepContent>
-                                            <Box
-                                                sx={{
-                                                    minWidth: 120,
-                                                    mb: 2,
-                                                    mt: 2,
-                                                }}
-                                            >
-                                                <FormControl fullWidth>
-                                                    <InputLabel id="option-2-1-label">
-                                                        Option 1
-                                                    </InputLabel>
-                                                    <Select
-                                                        labelId="option-2-1-label"
-                                                        id="option-2-1"
-                                                        label="Option 1"
-                                                        value={option2_1}
-                                                        onChange={(e) =>
-                                                            handleChange(
-                                                                e,
-                                                                "option2_1"
-                                                            )
-                                                        }
-                                                    >
-                                                        {optionList2?.map(
-                                                            (option, index) => (
-                                                                <MenuItem
-                                                                    value={
-                                                                        option
-                                                                    }
-                                                                    key={index}
-                                                                    disabled={disable_option_2(
-                                                                        option
-                                                                    )}
-                                                                >
-                                                                    {option}
-                                                                </MenuItem>
-                                                            )
-                                                        )}
-                                                    </Select>
-                                                </FormControl>
-                                            </Box>
-                                            {optionList2?.length > 1 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-2-2-label">
-                                                            Option 2
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-2-2-label"
-                                                            id="option-1-2"
-                                                            label="Option 2"
-                                                            value={option2_2}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option2_2"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList2?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_2(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                        </ol>
+                                        <p
+                                            style={{
+                                                color: "gray",
+                                                fontSize: "0.7rem",
+                                            }}
+                                        >
+                                            Lowest Priority
+                                        </p>
+                                    </div>
+                                    <div>
+                                        {userData &&
+                                        userData.current_sem === 5 ? (
+                                            <Chip label="Elective IV" />
+                                        ) : (
+                                            <Chip label="Elective VIII"></Chip>
+                                        )}
+                                        <p
+                                            style={{
+                                                color: "gray",
+                                                fontSize: "0.7rem",
+                                            }}
+                                        >
+                                            Highest Priority
+                                        </p>
+                                        <ol className={styles["list-element-data"]}>
+                                            {userData.elective_selections.second
+                                                .option2_1 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .second.option2_1
+                                                    }
+                                                </li>
                                             )}
-                                            {optionList2.length > 2 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-2-3-label">
-                                                            Option 3
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-2-3-label"
-                                                            id="option-2-3"
-                                                            label="Option 3"
-                                                            value={option2_3}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option2_3"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList2?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_2(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                            {userData.elective_selections.second
+                                                .option2_2 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .second.option2_2
+                                                    }
+                                                </li>
                                             )}
-                                            {optionList2.length > 3 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-2-4-label">
-                                                            Option 4
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-2-4-label"
-                                                            id="option-2-4"
-                                                            label="Option 4"
-                                                            value={option2_4}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option2_4"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList2?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_2(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                            {userData.elective_selections.second
+                                                .option2_3 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .second.option2_3
+                                                    }
+                                                </li>
                                             )}
-                                            {optionList2.length > 4 && (
-                                                <Box
-                                                    sx={{
-                                                        minWidth: 120,
-                                                        mb: 2,
-                                                    }}
-                                                >
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id="option-2-5-label">
-                                                            Option 5
-                                                        </InputLabel>
-                                                        <Select
-                                                            labelId="option-2-5-label"
-                                                            id="option-2-5"
-                                                            label="Option 5"
-                                                            value={option2_5}
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    e,
-                                                                    "option2_5"
-                                                                )
-                                                            }
-                                                        >
-                                                            {optionList2?.map(
-                                                                (
-                                                                    option,
-                                                                    index
-                                                                ) => (
-                                                                    <MenuItem
-                                                                        value={
-                                                                            option
-                                                                        }
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        disabled={disable_option_2(
-                                                                            option
-                                                                        )}
-                                                                    >
-                                                                        {option}
-                                                                    </MenuItem>
-                                                                )
-                                                            )}
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
+                                            {userData.elective_selections.second
+                                                .option2_4 !== "" && (
+                                                <li>
+                                                    {
+                                                        userData
+                                                            .elective_selections
+                                                            .second.option2_4
+                                                    }
+                                                </li>
                                             )}
-                                            <Box sx={{ mb: 2 }}>
-                                                <div>
-                                                    <Button
-                                                        variant="contained"
-                                                        onClick={handleNext}
-                                                        sx={{ mt: 1, mr: 1 }}
-                                                        disabled={
-                                                            option2_1 === "" ||
-                                                            option2_2 === "" ||
-                                                            (optionList2.length >
-                                                                2 &&
-                                                                option2_3 ===
-                                                                    "") ||
-                                                            (optionList2.length >
-                                                                3 &&
-                                                                option2_4 ===
-                                                                    "")
-                                                        }
-                                                    >
-                                                        Continue
-                                                    </Button>
-                                                    <Button
-                                                        onClick={handleBack}
-                                                        sx={{ mt: 1, mr: 1 }}
-                                                    >
-                                                        Back
-                                                    </Button>
-                                                </div>
-                                            </Box>
-                                        </StepContent>
-                                    </Step>
-                                    <Step>
-                                        <StepLabel>Submit</StepLabel>
-                                        <StepContent>
-                                            <Box sx={{ mb: 2 }}>
-                                                <div>
-                                                    <Button
-                                                        variant="contained"
-                                                        onClick={handleSubmit}
-                                                        sx={{ mt: 1, mr: 1 }}
-                                                        disabled={submitting}
-                                                    >
-                                                        Submit
-                                                    </Button>
-                                                    <Button
-                                                        onClick={handleBack}
-                                                        sx={{ mt: 1, mr: 1 }}
-                                                    >
-                                                        Back
-                                                    </Button>
-                                                </div>
-                                            </Box>
-                                        </StepContent>
-                                    </Step>
-                                </Stepper>
+                                        </ol>
+                                        <p
+                                            style={{
+                                                color: "gray",
+                                                fontSize: "0.7rem",
+                                            }}
+                                        >
+                                            Lowest Priority
+                                        </p>
+                                    </div>
+                                </div>
                             )}
+                            {userData &&
+                                !userData.elective_selections &&
+                                !submitted && (
+                                    <Stepper
+                                        activeStep={activeStep}
+                                        orientation="vertical"
+                                    >
+                                        <Step>
+                                            <StepLabel>
+                                                {userData &&
+                                                userData?.current_sem === 7
+                                                    ? "Elective VII"
+                                                    : "Elective III"}
+                                            </StepLabel>
+                                            <StepContent>
+                                                <Box
+                                                    sx={{
+                                                        minWidth: 120,
+                                                        mb: 2,
+                                                        mt: 2,
+                                                    }}
+                                                >
+                                                    <FormControl fullWidth>
+                                                        <InputLabel id="option-1-1-label">
+                                                            Option 1
+                                                        </InputLabel>
+                                                        <Select
+                                                            labelId="option-1-1-label"
+                                                            id="option-1-1"
+                                                            label="Option 1"
+                                                            value={option1_1}
+                                                            onChange={(e) =>
+                                                                handleChange(
+                                                                    e,
+                                                                    "option1_1"
+                                                                )
+                                                            }
+                                                        >
+                                                            {optionList1?.map(
+                                                                (
+                                                                    option,
+                                                                    index
+                                                                ) => (
+                                                                    <MenuItem
+                                                                        value={
+                                                                            option
+                                                                        }
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        disabled={disable_option_1(
+                                                                            option
+                                                                        )}
+                                                                    >
+                                                                        {option}
+                                                                    </MenuItem>
+                                                                )
+                                                            )}
+                                                        </Select>
+                                                    </FormControl>
+                                                </Box>
+                                                {optionList1?.length > 1 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-1-2-label">
+                                                                Option 2
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-1-2-label"
+                                                                id="option-1-2"
+                                                                label="Option 2"
+                                                                value={
+                                                                    option1_2
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option1_2"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList1?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_1(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                {optionList1.length > 2 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-1-3-label">
+                                                                Option 3
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-1-3-label"
+                                                                id="option-1-3"
+                                                                label="Option 3"
+                                                                value={
+                                                                    option1_3
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option1_3"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList1?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_1(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                {optionList1.length > 3 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-1-4-label">
+                                                                Option 4
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-1-4-label"
+                                                                id="option-1-4"
+                                                                label="Option 4"
+                                                                value={
+                                                                    option1_4
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option1_4"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList1?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_1(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                {optionList1.length > 4 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-1-4-label">
+                                                                Option 5
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-1-5-label"
+                                                                id="option-1-5"
+                                                                label="Option 5"
+                                                                value={
+                                                                    option1_5
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option1_5"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList1?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_1(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                <Box sx={{ mb: 2 }}>
+                                                    <div>
+                                                        <Button
+                                                            variant="contained"
+                                                            type="button"
+                                                            disabled={
+                                                                option1_1 ===
+                                                                    "" ||
+                                                                option1_2 ===
+                                                                    "" ||
+                                                                (optionList1.length >
+                                                                    2 &&
+                                                                    option1_3 ===
+                                                                        "") ||
+                                                                (optionList1.length >
+                                                                    3 &&
+                                                                    option1_4 ===
+                                                                        "")
+                                                            }
+                                                            onClick={handleNext}
+                                                            sx={{
+                                                                mt: 1,
+                                                                mr: 1,
+                                                            }}
+                                                        >
+                                                            Continue
+                                                        </Button>
+                                                    </div>
+                                                </Box>
+                                            </StepContent>
+                                        </Step>
+                                        <Step>
+                                            <StepLabel>
+                                                {userData &&
+                                                userData.current_sem === 7
+                                                    ? "Elective VIII"
+                                                    : "Elective IV"}
+                                            </StepLabel>
+                                            <StepContent>
+                                                <Box
+                                                    sx={{
+                                                        minWidth: 120,
+                                                        mb: 2,
+                                                        mt: 2,
+                                                    }}
+                                                >
+                                                    <FormControl fullWidth>
+                                                        <InputLabel id="option-2-1-label">
+                                                            Option 1
+                                                        </InputLabel>
+                                                        <Select
+                                                            labelId="option-2-1-label"
+                                                            id="option-2-1"
+                                                            label="Option 1"
+                                                            value={option2_1}
+                                                            onChange={(e) =>
+                                                                handleChange(
+                                                                    e,
+                                                                    "option2_1"
+                                                                )
+                                                            }
+                                                        >
+                                                            {optionList2?.map(
+                                                                (
+                                                                    option,
+                                                                    index
+                                                                ) => (
+                                                                    <MenuItem
+                                                                        value={
+                                                                            option
+                                                                        }
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        disabled={disable_option_2(
+                                                                            option
+                                                                        )}
+                                                                    >
+                                                                        {option}
+                                                                    </MenuItem>
+                                                                )
+                                                            )}
+                                                        </Select>
+                                                    </FormControl>
+                                                </Box>
+                                                {optionList2?.length > 1 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-2-2-label">
+                                                                Option 2
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-2-2-label"
+                                                                id="option-1-2"
+                                                                label="Option 2"
+                                                                value={
+                                                                    option2_2
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option2_2"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList2?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_2(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                {optionList2.length > 2 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-2-3-label">
+                                                                Option 3
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-2-3-label"
+                                                                id="option-2-3"
+                                                                label="Option 3"
+                                                                value={
+                                                                    option2_3
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option2_3"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList2?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_2(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                {optionList2.length > 3 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-2-4-label">
+                                                                Option 4
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-2-4-label"
+                                                                id="option-2-4"
+                                                                label="Option 4"
+                                                                value={
+                                                                    option2_4
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option2_4"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList2?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_2(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                {optionList2.length > 4 && (
+                                                    <Box
+                                                        sx={{
+                                                            minWidth: 120,
+                                                            mb: 2,
+                                                        }}
+                                                    >
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id="option-2-5-label">
+                                                                Option 5
+                                                            </InputLabel>
+                                                            <Select
+                                                                labelId="option-2-5-label"
+                                                                id="option-2-5"
+                                                                label="Option 5"
+                                                                value={
+                                                                    option2_5
+                                                                }
+                                                                onChange={(e) =>
+                                                                    handleChange(
+                                                                        e,
+                                                                        "option2_5"
+                                                                    )
+                                                                }
+                                                            >
+                                                                {optionList2?.map(
+                                                                    (
+                                                                        option,
+                                                                        index
+                                                                    ) => (
+                                                                        <MenuItem
+                                                                            value={
+                                                                                option
+                                                                            }
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                            disabled={disable_option_2(
+                                                                                option
+                                                                            )}
+                                                                        >
+                                                                            {
+                                                                                option
+                                                                            }
+                                                                        </MenuItem>
+                                                                    )
+                                                                )}
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                )}
+                                                <Box sx={{ mb: 2 }}>
+                                                    <div>
+                                                        <Button
+                                                            variant="contained"
+                                                            onClick={handleNext}
+                                                            sx={{
+                                                                mt: 1,
+                                                                mr: 1,
+                                                            }}
+                                                            disabled={
+                                                                option2_1 ===
+                                                                    "" ||
+                                                                option2_2 ===
+                                                                    "" ||
+                                                                (optionList2.length >
+                                                                    2 &&
+                                                                    option2_3 ===
+                                                                        "") ||
+                                                                (optionList2.length >
+                                                                    3 &&
+                                                                    option2_4 ===
+                                                                        "")
+                                                            }
+                                                        >
+                                                            Continue
+                                                        </Button>
+                                                        <Button
+                                                            onClick={handleBack}
+                                                            sx={{
+                                                                mt: 1,
+                                                                mr: 1,
+                                                            }}
+                                                        >
+                                                            Back
+                                                        </Button>
+                                                    </div>
+                                                </Box>
+                                            </StepContent>
+                                        </Step>
+                                        <Step>
+                                            <StepLabel>Submit</StepLabel>
+                                            <StepContent>
+                                                <Box sx={{ mb: 2 }}>
+                                                    <div>
+                                                        <Button
+                                                            variant="contained"
+                                                            onClick={
+                                                                handleSubmit
+                                                            }
+                                                            sx={{
+                                                                mt: 1,
+                                                                mr: 1,
+                                                            }}
+                                                            disabled={
+                                                                submitting
+                                                            }
+                                                        >
+                                                            Submit
+                                                        </Button>
+                                                        <Button
+                                                            onClick={handleBack}
+                                                            sx={{
+                                                                mt: 1,
+                                                                mr: 1,
+                                                            }}
+                                                        >
+                                                            Back
+                                                        </Button>
+                                                    </div>
+                                                </Box>
+                                            </StepContent>
+                                        </Step>
+                                    </Stepper>
+                                )}
                         </div>
 
                         {/* Selection data section */}
-                        <div className={styles["selection-data-section"]}>
-                            Section
-                        </div>
+                        {userData && !userData.elective_selections && (
+                            <div className={styles["selection-data-section"]}>
+                                <div>
+                                    {userData && userData.current_sem === 5 ? (
+                                        <Chip label="Elective III" />
+                                    ) : (
+                                        <Chip label="Elective VII"></Chip>
+                                    )}
+                                    <p
+                                        style={{
+                                            color: "gray",
+                                            fontSize: "0.7rem",
+                                        }}
+                                    >
+                                        Highest Priority
+                                    </p>
+                                    <ol className={styles["list-element"]}>
+                                        {option1_1 !== "" && (
+                                            <li>{option1_1}</li>
+                                        )}
+                                        {option1_2 !== "" && (
+                                            <li>{option1_2}</li>
+                                        )}
+                                        {option1_3 !== "" && (
+                                            <li>{option1_3}</li>
+                                        )}
+                                        {option1_4 !== "" && (
+                                            <li>{option1_4}</li>
+                                        )}
+                                    </ol>
+                                    <p
+                                        style={{
+                                            color: "gray",
+                                            fontSize: "0.7rem",
+                                        }}
+                                    >
+                                        Lowest Priority
+                                    </p>
+                                </div>
+                                <div>
+                                    {userData && userData.current_sem === 5 ? (
+                                        <Chip label="Elective IV" />
+                                    ) : (
+                                        <Chip label="Elective VIII"></Chip>
+                                    )}
+                                    <p
+                                        style={{
+                                            color: "gray",
+                                            fontSize: "0.7rem",
+                                        }}
+                                    >
+                                        Highest Priority
+                                    </p>
+                                    <ol className={styles["list-element"]}>
+                                        {option2_1 !== "" && (
+                                            <li>{option2_1}</li>
+                                        )}
+                                        {option2_2 !== "" && (
+                                            <li>{option2_2}</li>
+                                        )}
+                                        {option2_3 !== "" && (
+                                            <li>{option2_3}</li>
+                                        )}
+                                        {option2_4 !== "" && (
+                                            <li>{option2_4}</li>
+                                        )}
+                                    </ol>
+                                    <p
+                                        style={{
+                                            color: "gray",
+                                            fontSize: "0.7rem",
+                                        }}
+                                    >
+                                        Lowest Priority
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                     </>
                 )}
             </div>

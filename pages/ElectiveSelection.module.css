@@ -17,6 +17,9 @@
 }
 
 .selection-data-section {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .info-card {
@@ -50,6 +53,10 @@
     font-size: 30px;
 }
 
+.list-element {
+    font-size: 0.7rem;
+}
+
 @keyframes textclip {
     to {
         background-position: 200% center;
@@ -75,5 +82,13 @@
     .main-grid {
         grid-template-columns: 1fr;
         padding: 0 0.3rem;
+    }
+    .main-section {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .selection-data-section {
+        grid-column: 1 / 2;
     }
 }
