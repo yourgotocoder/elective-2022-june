@@ -8,7 +8,7 @@ const createMissingDataFile = (array, sem, field) => {
 // console.log(data[0]);
 const upload = async () => {
     const client = await MongoClient.connect(
-      "mongodb+srv://primary:SMIT01CSE@cluster0.i5fq9.mongodb.net/?retryWrites=true&w=majority"
+      
     );
     const db = client.db("cse");
     const collection = db.collection("student-data");
