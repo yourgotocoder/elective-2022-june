@@ -54,7 +54,6 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       
       <Head>
-        <html lang="en"></html>
         <title>Elective Selection App | CSE | SMIT</title>
         <meta
           name="description"
