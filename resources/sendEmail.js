@@ -1,5 +1,7 @@
 const { MongoClient } = require("mongodb");
 const nodemailer = require("nodemailer");
+const keys = require("./private");
+
 
 // console.log(data[0]);
 const upload = async () => {
@@ -13,12 +15,12 @@ const upload = async () => {
   const _7thSemStudents = data.filter((student) => student.current_sem === 7);
 
   const transporter = nodemailer.createTransport({
-    host: "",
+    host: keys.host,
     port: 587,
     secure: false,
     auth: {
-      user: "",
-      pass: "",
+      user: keys.user,
+      pass: keys.pass,
     },
   });
 
