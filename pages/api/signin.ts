@@ -48,6 +48,7 @@ export default async function handler(
           : "t53d798fhi3sg8r4h8gd97dfuiog7dfgy789d34cyn",
         { expiresIn: "1h" }
       );
+      await client.close()
       res.status(200).json({ message: "Found", token });
     }
   }

@@ -46,6 +46,7 @@ export default async function handler(
       { regNo: data.regNo },
       { $set: { elective_selections } }
     );
+    await client.close()
     console.log(data);
     res.status(200).json({ message: "John Doe" });
   }
