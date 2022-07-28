@@ -38,6 +38,9 @@ export default async function handler(
             option3_3: data.option3_3,
             option3_4: data.option3_4,
             option3_5: data.option3_5,
+            option3_6: data.option3_6,
+            option3_7: data.option3_7,
+            option3_8: data.option3_8
           },
         }),
     };

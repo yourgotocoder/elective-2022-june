@@ -20,7 +20,10 @@ const update = async () => {
             "CE1721 Fundamentals of Remote Sensing and GIS",
             "CE1741 Optimization Techniques",
             "EE1724 Machine Learning",
-            "ME1726 Financial Planning and Analysis"
+            "ME1726 Financial Planning and Analysis",
+            "AD1722 Artificial Intelligence in Health Care",
+            "IT1724 Geographical Information Systems",
+            "BA1721 Entrepreneurship for Engineers"
           ],
         },
       }
