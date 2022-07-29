@@ -181,11 +181,70 @@ electiveAllotment()
                     data.length
             );
         }
-        console.log(
-            optimizedSeatsElective1,
-            optimizedSeatsElective2,
-            optimizedSeatsElective3,
-            data.length
-        );
+        const allotedSeats = data.reduce((previousValue, currentValue) => {
+            const studentObj = {
+                REGNO: currentValue.REGNO,
+                NAME: currentValue.NAME,
+                CGPA: currentValue.CGPA,
+                first_elective: "",
+                second_elective: "",
+                third_elective: "",
+            };
+            for (let key in currentValue.elective_selections.second) {
+                if (
+                    optimizedSeatsElective2[
+                        currentValue.elective_selections.second[key]
+                    ] > 0
+                ) {
+                    studentObj.second_elective =
+                        currentValue.elective_selections.second[key];
+                    optimizedSeatsElective2[
+                        currentValue.elective_selections.second[key]
+                    ] -= 1;
+                    break;
+                }
+            }
+            for (let key in currentValue.elective_selections.first) {
+                if (
+                    studentObj.second_elective === "CS1659 Ethical Hacking" &&
+                    currentValue.elective_selections.first[key] ===
+                        "CS1733 Cryptography & Network Security"
+                ) {
+                    continue;
+                }
+                if (
+                    optimizedSeatsElective1[
+                        currentValue.elective_selections.first[key]
+                    ] > 0
+                ) {
+                    studentObj.first_elective =
+                        currentValue.elective_selections.first[key];
+                    optimizedSeatsElective1[
+                        currentValue.elective_selections.first[key]
+                    ] -= 1;
+                    break;
+                }
+            }
+
+            for (let key in currentValue.elective_selections.third) {
+                if (
+                    optimizedSeatsElective3[
+                        currentValue.elective_selections.third[key]
+                    ] > 0
+                ) {
+                    studentObj.third_elective =
+                        currentValue.elective_selections.third[key];
+                    optimizedSeatsElective3[
+                        currentValue.elective_selections.third[key]
+                    ] -= 1;
+                    break;
+                }
+            }
+
+            previousValue.push(studentObj);
+
+            return previousValue;
+        }, []);
+        console.log(allotedSeats);
     })
     .catch((err) => console.log(err));
