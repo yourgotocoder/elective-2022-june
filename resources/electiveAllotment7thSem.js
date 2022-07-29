@@ -40,10 +40,10 @@ const electiveAllotment = async () => {
 
 electiveAllotment()
     .then((data) => {
-        fs.writeFileSync(
-            `data/PreAllotmentTransformedData7thSem.json`,
-            JSON.stringify(data, null, 2)
-        );
+        // fs.writeFileSync(
+        //     `data/PreAllotmentTransformedData7thSem.json`,
+        //     JSON.stringify(dat   a, null, 2)
+        // );
 
         const selectionCountsPerSubject = data.reduce(
             (previousValue, currentValue) => {
@@ -245,6 +245,9 @@ electiveAllotment()
 
             return previousValue;
         }, []);
-        console.log(allotedSeats);
+        const stringifiedData = JSON.stringify(allotedSeats, null, 2);
+        const selectionData = JSON.stringify(data, null, 2)
+        // fs.writeFileSync("data/ElectiveSelection7thSem.json", selectionData)
+        // fs.writeFileSync("data/ElectiveAllotment7thSem.json", stringifiedData);
     })
     .catch((err) => console.log(err));
