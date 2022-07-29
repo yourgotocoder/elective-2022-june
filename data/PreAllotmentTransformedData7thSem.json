@@ -3028,6 +3028,41 @@
     }
   },
   {
+    "REGNO": 201900405,
+    "NAME": "FAIZ ALI",
+    "CGPA": 8.70481927710843,
+    "elective_1": "CS1442 UI/UX Design",
+    "elective_2": "CS1538 Object Oriented Analysis and Design using UML",
+    "elective_3": "CS1540 Bioinformatics",
+    "elective_4": "CS1435 Python Programming",
+    "elective_5": "CS1650 Agile Methodology",
+    "elective_6": "CS1644 Artificial Intelligence",
+    "elective_selections": {
+      "first": {
+        "option1_1": "CS1789 Engineering Research Methodology",
+        "option1_2": "CS1733 Cryptography & Network Security",
+        "option1_3": "CS1756 R Programming",
+        "option1_4": ""
+      },
+      "second": {
+        "option2_1": "CS1746 Human Computer Interaction",
+        "option2_2": "CS1631 Deep Learning",
+        "option2_3": "CS1659 Ethical Hacking",
+        "option2_4": ""
+      },
+      "third": {
+        "option3_1": "ME1726 Financial Planning and Analysis",
+        "option3_2": "BA1721 Entrepreneurship for Engineers",
+        "option3_3": "AD1722 Artificial Intelligence in Health Care",
+        "option3_4": "CE1741 Optimization Techniques",
+        "option3_5": "IT1724 Geographical Information Systems",
+        "option3_6": "EC1722 Automation and Robotics",
+        "option3_7": "CE1721 Fundamentals of Remote Sensing and GIS",
+        "option3_8": "EE1724 Machine Learning"
+      }
+    }
+  },
+  {
     "REGNO": 201900226,
     "NAME": "ANKUAR SAXENA",
     "CGPA": 8.69879518072289,
@@ -4158,6 +4193,41 @@
         "option3_6": "AD1722 Artificial Intelligence in Health Care",
         "option3_7": "IT1724 Geographical Information Systems",
         "option3_8": "EE1724 Machine Learning"
+      }
+    }
+  },
+  {
+    "REGNO": 201900065,
+    "NAME": "ADRIEL GYAMTSO LINGDONG",
+    "CGPA": 8.24096385542169,
+    "elective_1": "CS1437/CS1422 Enterprise Resource Planning",
+    "elective_2": "CS1531 Information Transmission and Coding Theory",
+    "elective_3": "CS1540/CS1632 Bioinformatics",
+    "elective_4": "CS1435 Python Programming",
+    "elective_5": "CS1641 Social Network Analysis",
+    "elective_6": null,
+    "elective_selections": {
+      "first": {
+        "option1_1": "CS1733 Cryptography & Network Security",
+        "option1_2": "CS1650 Agile Methodology",
+        "option1_3": "CS1789 Engineering Research Methodology",
+        "option1_4": "CS1756 R Programming"
+      },
+      "second": {
+        "option2_1": "CS1659 Ethical Hacking",
+        "option2_2": "CS1746 Human Computer Interaction",
+        "option2_3": "CS1631 Deep Learning",
+        "option2_4": ""
+      },
+      "third": {
+        "option3_1": "ME1726 Financial Planning and Analysis",
+        "option3_2": "CE1741 Optimization Techniques",
+        "option3_3": "BA1721 Entrepreneurship for Engineers",
+        "option3_4": "IT1724 Geographical Information Systems",
+        "option3_5": "EC1722 Automation and Robotics",
+        "option3_6": "EE1724 Machine Learning",
+        "option3_7": "CE1721 Fundamentals of Remote Sensing and GIS",
+        "option3_8": "AD1722 Artificial Intelligence in Health Care"
       }
     }
   },
