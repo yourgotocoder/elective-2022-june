@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 const fs = require("fs");
 
 const update = async () => {
-    const client = await MongoClient.connect();
+    const client = await MongoClient.connect("mongodb+srv://primary:SMIT01CSE@cluster0.i5fq9.mongodb.net/?retryWrites=true&w=majority");
     const db = client.db("cse");
     const collection = db.collection("student-data");
     const data = await collection.find().toArray();
@@ -18,8 +18,7 @@ const update = async () => {
         await collection.updateOne(
             { regNo: _5thSemStudent[i].regNo },
             {
-                $set: {
-                    
+                $set: { 
                     elective_4_options,
                 },
             }
