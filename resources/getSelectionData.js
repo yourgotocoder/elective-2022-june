@@ -67,8 +67,14 @@ const selectionData = async () => {
     return {_5thSemData, _7thSemData};
 };
 
-electiveAllotment()
+selectionData()
     .then((data) => {
-        console.log(data)
+        const _5thXls = json2xls(data._5thSemData);
+        const _7thXls = json2xls(data._7thSemData);
+
+        fs.writeFileSync(`data/_7thSemSelectionData.xlsx`, _7thXls, "binary");
+        fs.writeFileSync(`data/_5thSemSelectionData.xlsx`, _5thXls, "binary");
+
+        console.log("Success")
     })
     .catch((err) => console.log(err));
