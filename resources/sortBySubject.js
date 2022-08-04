@@ -3,7 +3,7 @@ const json2xls = require("json2xls");
 const fs = require("fs")
 
 const data = readExcel.parseXls2Json(
-    __dirname + "/ElectiveAllotment7thSem.xlsx"
+    __dirname + "/../data/ElectiveAllotment7thSem.xlsx"
 )[0];
 
 const subjects = {};
