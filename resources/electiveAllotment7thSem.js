@@ -295,6 +295,12 @@ electiveAllotment()
             }
 
             for (let key in currentValue.elective_selections.third) {
+                // if (
+                //     studentObj.third_elective === "CS1741 Machine Learning" &&
+                //     currentValue.elective_selections.third[key] === "EE1724 Machine Learning"
+                // ) {
+                //     continue;
+                // }
                 if (
                     optimizedSeatsElective3Copy[
                         currentValue.elective_selections.third[key]
@@ -342,35 +348,57 @@ electiveAllotment()
                 CGPA: student.CGPA,
             };
             for (let subject of subjectNameElective1) {
-                if (student.first_elective === subject && !subjectWiseData[subject]) {
+                if (
+                    student.first_elective === subject &&
+                    !subjectWiseData[subject]
+                ) {
                     subjectWiseData[subject] = [];
                     subjectWiseData[subject].push(studentObj);
-                } else if (student.first_elective === subject && subjectWiseData[subject].length > 0) {
+                } else if (
+                    student.first_elective === subject &&
+                    subjectWiseData[subject].length > 0
+                ) {
                     subjectWiseData[subject].push(studentObj);
                 }
             }
 
             for (let subject of subjectNameElective2) {
-                if (student.second_elective === subject && !subjectWiseData[subject]) {
+                if (
+                    student.second_elective === subject &&
+                    !subjectWiseData[subject]
+                ) {
                     subjectWiseData[subject] = [];
                     subjectWiseData[subject].push(studentObj);
-                } else if (student.second_elective === subject && subjectWiseData[subject].length > 0) {
+                } else if (
+                    student.second_elective === subject &&
+                    subjectWiseData[subject].length > 0
+                ) {
                     subjectWiseData[subject].push(studentObj);
                 }
             }
 
             for (let subject of subjectNameElective3) {
-                if (student.third_elective === subject && !subjectWiseData[subject]) {
+                if (
+                    student.third_elective === subject &&
+                    !subjectWiseData[subject]
+                ) {
                     subjectWiseData[subject] = [];
                     subjectWiseData[subject].push(studentObj);
-                } else if (student.third_elective === subject && subjectWiseData[subject].length > 0) {
+                } else if (
+                    student.third_elective === subject &&
+                    subjectWiseData[subject].length > 0
+                ) {
                     subjectWiseData[subject].push(studentObj);
                 }
             }
         }
         for (let key in subjectWiseData) {
             const xlsData = json2xls(subjectWiseData[key]);
-            fs.writeFileSync(`data/7thSem/${key}Allotment.xlsx`, xlsData, 'binary')
+            fs.writeFileSync(
+                `data/7thSem/${key}Allotment.xlsx`,
+                xlsData,
+                "binary"
+            );
         }
         // console.log(subjectWiseData)
         // const stringifiedData = JSON.stringify(allotedSeats, null, 2);
