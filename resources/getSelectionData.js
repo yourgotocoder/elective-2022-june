@@ -18,10 +18,9 @@ const selectionData = async () => {
         .filter(
             (student) =>
                 student.current_sem === 7 &&
-                student.cgpa &&
+                !student.cgpa &&
                 student.elective_selections
         )
-        .sort((studentA, studentB) => studentB.cgpa - studentA.cgpa)
         .map((student) => ({
             REGNO: student.regNo,
             NAME: student.name,
@@ -72,8 +71,8 @@ selectionData()
         const _5thXls = json2xls(data._5thSemData);
         const _7thXls = json2xls(data._7thSemData);
 
-        fs.writeFileSync(`data/_7thSemSelectionData.xlsx`, _7thXls, "binary");
-        fs.writeFileSync(`data/_5thSemSelectionData.xlsx`, _5thXls, "binary");
+        fs.writeFileSync(`data/_7thSemSelectionDataCGPAMissing.xlsx`, _7thXls, "binary");
+        // fs.writeFileSync(`data/_5thSemSelectionData.xlsx`, _5thXls, "binary");
 
         console.log("Success")
     })
